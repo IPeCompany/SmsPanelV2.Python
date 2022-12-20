@@ -4,7 +4,16 @@ except ModuleNotFoundError:
     import requests
 
 
-class SmsIr :
+class SmsIrRequestMethodMixin :
+    def post(self, url, data):
+        return requests.post(
+            url,
+            headers=self._headers,
+            json=data,
+        )
+
+
+class SmsIr(SmsIrRequestMethodMixin):
     ENDPOINT = 'https://api.sms.ir'
 
     def __init__(self, api_key, linenumber) -> None:
@@ -35,10 +44,18 @@ class SmsIr :
             url,
             data,
         )
+    
+    def send_like_to_like(self, messages, numbers, send_date_time=None, linenumber=None):
+        url = f'{self.ENDPOINT}/v1/send/liketolike'
 
-    def post(self, url, data):
-        return requests.post(
+        data = {
+            'lineNumber': linenumber or self._linenumber,
+            'MessageTexts' : messages,
+            'Mobiles': numbers,
+            'SendDateTime': send_date_time,
+        }
+
+        return self.post(
             url,
-            headers=self._headers,
-            json=data,
+            data,
         )
