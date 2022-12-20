@@ -1,0 +1,2 @@
+class SmsIr :
+    pass
