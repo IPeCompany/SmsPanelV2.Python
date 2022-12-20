@@ -17,6 +17,13 @@ class SmsIrRequestMethodMixin :
             url,
             headers=self._headers,
         )
+    
+    def get(self, url):
+        return requests.get(
+            url,
+            headers=self._headers,
+        )
+
 
 class SmsIr(SmsIrRequestMethodMixin):
     ENDPOINT = 'https://api.sms.ir'
@@ -84,4 +91,11 @@ class SmsIr(SmsIrRequestMethodMixin):
         return self.post(
             url,
             data,
+        )
+    
+    def report_message(self, message_id):
+        url = f'{self.ENDPOINT}/v1/send/{message_id}'
+
+        return self.get(
+            url,
         )

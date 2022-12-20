@@ -72,3 +72,11 @@ sms_ir.send_verify_code(
     parameters,
 )
 ```
+
+### Message Report
+get report of sent message
+```python
+sms_ir.report_message(
+    message_id,
+)
+```
