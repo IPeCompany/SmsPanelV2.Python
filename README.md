@@ -16,7 +16,7 @@ pip install faster-than-requests
 
 ## Usage
 ### create instance
-```
+```python
 from smsir import SmsIr
 sms_ir = SmsIr(
     api_key,
@@ -26,7 +26,7 @@ sms_ir = SmsIr(
 
 ### send sms
 Send message to specific mobile number
-```
+```python
 sms_ir.send_sms(
     number,
     message,
@@ -36,7 +36,7 @@ sms_ir.send_sms(
 
 ### send bulk sms
 Send message to multiple mobile numbers
-```
+```python
 sms_ir.send_bulk_sms(
     numbers,
     message,
@@ -46,7 +46,7 @@ sms_ir.send_bulk_sms(
 
 ### send like to like sms
 Send multiple messages to multiple mobile numbers pair to pair
-```
+```python
 sms_ir.send_like_to_like(
     numbers,
     messages,
