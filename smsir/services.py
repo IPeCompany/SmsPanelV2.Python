@@ -45,7 +45,7 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
     
-    def send_like_to_like(self, messages, numbers, send_date_time=None, linenumber=None):
+    def send_like_to_like(self, numbers, messages, linenumber=None, send_date_time=None):
         url = f'{self.ENDPOINT}/v1/send/liketolike'
 
         data = {
