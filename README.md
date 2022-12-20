@@ -126,3 +126,14 @@ sms_ir.report_today_received(
 )
 ```
 
+### Archived Received Report
+get report of today received messages
+```python
+sms_ir.report_archived_received(
+    from_data,
+    to_date,
+    page_size,
+    page_number,
+)
+```
+

@@ -160,4 +160,21 @@ class SmsIr(SmsIrRequestMethodMixin):
             url,
             data,
         )
+    
+    def report_archived_received(self, from_data=None , to_date=None, page_size=10, page_number=1):
+        url = f'{self.ENDPOINT}/v1/receive/archive'
+
+        data = {
+            'fromDate' : from_data,
+            'toDate' : to_date,
+            'pageSize' : page_size,
+            'pageNumber' : page_number,
+        }
+
+        return self.get(
+            url,
+            data,
+        )
+
+
 
