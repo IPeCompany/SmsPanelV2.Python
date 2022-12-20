@@ -25,6 +25,7 @@ sms_ir = SmsIr(
 ```
 
 ### send sms
+Send message to specific mobile number
 ```
 sms_ir.send_sms(
     number,
@@ -34,6 +35,7 @@ sms_ir.send_sms(
 ```
 
 ### send bulk sms
+Send message to multiple mobile numbers
 ```
 sms_ir.send_bulk_sms(
     numbers,
@@ -43,6 +45,7 @@ sms_ir.send_bulk_sms(
 ```
 
 ### send like to like sms
+Send multiple messages to multiple mobile numbers pair to pair
 ```
 sms_ir.send_like_to_like(
     numbers,
