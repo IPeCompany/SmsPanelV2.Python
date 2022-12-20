@@ -175,6 +175,17 @@ class SmsIr(SmsIrRequestMethodMixin):
             url,
             data,
         )
+    
+    def get_credit(self):
+        url = f'{self.ENDPOINT}/v1/credit'
 
+        return self.get(
+            url,
+        )
 
+    def get_line_numbers(self):
+        url = f'{self.ENDPOINT}/v1/line'
 
+        return self.get(
+            url,
+        )

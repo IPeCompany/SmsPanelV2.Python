@@ -137,3 +137,14 @@ sms_ir.report_archived_received(
 )
 ```
 
+### Get Credit
+get account credit
+```python
+sms_ir.get_credit()
+```
+
+### Get Line Numbers
+get account line numbers
+```python
+sms_ir.get_line_numbers()
+```
