@@ -109,3 +109,10 @@ sms_ir.report_archived(
 )
 ```
 
+### Latest Received Report
+get report of latest received messages
+```python
+sms_ir.report_latest_received(
+    count,
+)
+```

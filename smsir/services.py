@@ -135,3 +135,16 @@ class SmsIr(SmsIrRequestMethodMixin):
             url,
             data,
         )
+
+    def report_latest_received(self, count):
+        url = f'{self.ENDPOINT}/v1/receive/latest'
+
+        data = {
+            'count': count,
+        }
+
+        return self.get(
+            url,
+            data,
+        )
+
