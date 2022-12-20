@@ -12,6 +12,11 @@ class SmsIrRequestMethodMixin :
             json=data,
         )
 
+    def delete(self, url):
+        return requests.delete(
+            url,
+            headers=self._headers,
+        )
 
 class SmsIr(SmsIrRequestMethodMixin):
     ENDPOINT = 'https://api.sms.ir'
@@ -58,4 +63,11 @@ class SmsIr(SmsIrRequestMethodMixin):
         return self.post(
             url,
             data,
+        )
+
+    def delete_scheduled(self, pack_id):
+        url = f'{self.ENDPOINT}/v1/send/scheduled/{pack_id}'
+
+        return self.delete(
+            url,
         )

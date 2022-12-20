@@ -54,3 +54,11 @@ sms_ir.send_like_to_like(
     send_date_time,
 )
 ```
+
+### Delete Scheduled
+Delete scheduled message pack
+```python
+sms_ir.delete_scheduled(
+    pack_id,
+)
+```
