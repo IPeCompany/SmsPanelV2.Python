@@ -99,3 +99,10 @@ class SmsIr(SmsIrRequestMethodMixin):
         return self.get(
             url,
         )
+    
+    def report_pack(self, pack_id):
+        url = f'{self.ENDPOINT}/v1/send/pack/{pack_id}'
+
+        return self.get(
+            url,
+        )

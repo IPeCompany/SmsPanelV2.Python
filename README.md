@@ -80,3 +80,11 @@ sms_ir.report_message(
     message_id,
 )
 ```
+
+### Pack Report
+get report of sent message pack
+```python
+sms_ir.report_pack(
+    pack_id,
+)
+```
