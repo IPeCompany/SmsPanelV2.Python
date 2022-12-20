@@ -62,3 +62,13 @@ sms_ir.delete_scheduled(
     pack_id,
 )
 ```
+
+### Send Verification Code
+Send verification code with predefined template
+```python
+sms_ir.send_verify_code(
+    number,
+    template_id,
+    parameters,
+)
+```

@@ -71,3 +71,17 @@ class SmsIr(SmsIrRequestMethodMixin):
         return self.delete(
             url,
         )
+    
+    def send_verify_code(self, number, template_id, parameters):
+        url = f'{self.ENDPOINT}/v1/send/verify'
+
+        data = {
+            'Mobile' : number,
+            'TemplateId' : template_id,
+            'Parameters' : parameters,
+        }
+
+        return self.post(
+            url,
+            data,
+        )
