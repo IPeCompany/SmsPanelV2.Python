@@ -45,7 +45,7 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
 
     def send_bulk_sms(self, numbers, message, linenumber=None):
-        url = f'{self.ENDPOINT}/v1/send/bulk'
+        url = f'{self.ENDPOINT}/v1/send/bulk/'
 
         data = {
             'lineNumber': linenumber or self._linenumber,
@@ -59,7 +59,7 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
     
     def send_like_to_like(self, numbers, messages, linenumber=None, send_date_time=None):
-        url = f'{self.ENDPOINT}/v1/send/liketolike'
+        url = f'{self.ENDPOINT}/v1/send/liketolike/'
 
         data = {
             'lineNumber': linenumber or self._linenumber,
@@ -74,14 +74,14 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
 
     def delete_scheduled(self, pack_id):
-        url = f'{self.ENDPOINT}/v1/send/scheduled/{pack_id}'
+        url = f'{self.ENDPOINT}/v1/send/scheduled/{pack_id}/'
 
         return self.delete(
             url,
         )
     
     def send_verify_code(self, number, template_id, parameters):
-        url = f'{self.ENDPOINT}/v1/send/verify'
+        url = f'{self.ENDPOINT}/v1/send/verify/'
 
         data = {
             'Mobile' : number,
@@ -95,21 +95,21 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
     
     def report_message(self, message_id):
-        url = f'{self.ENDPOINT}/v1/send/{message_id}'
+        url = f'{self.ENDPOINT}/v1/send/{message_id}/'
 
         return self.get(
             url,
         )
     
     def report_pack(self, pack_id):
-        url = f'{self.ENDPOINT}/v1/send/pack/{pack_id}'
+        url = f'{self.ENDPOINT}/v1/send/pack/{pack_id}/'
 
         return self.get(
             url,
         )
     
     def report_today(self, page_size, page_number):
-        url = f'{self.ENDPOINT}/v1/send/live'
+        url = f'{self.ENDPOINT}/v1/send/live/'
 
         data = {
             'pageSize' : page_size,
@@ -122,7 +122,7 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
     
     def report_archived(self, from_date=None, to_date=None, page_size=10, page_number=1):
-        url = f'{self.ENDPOINT}/v1/send/archive'
+        url = f'{self.ENDPOINT}/v1/send/archive/'
 
         data = {
             'fromDate': from_date,
@@ -137,7 +137,7 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
 
     def report_latest_received(self, count):
-        url = f'{self.ENDPOINT}/v1/receive/latest'
+        url = f'{self.ENDPOINT}/v1/receive/latest/'
 
         data = {
             'count': count,
@@ -149,7 +149,7 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
     
     def report_today_received(self, page_size, page_number):
-        url = f'{self.ENDPOINT}/v1/receive/live'
+        url = f'{self.ENDPOINT}/v1/receive/live/'
 
         data = {
             'pageSize': page_size,
@@ -162,7 +162,7 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
     
     def report_archived_received(self, from_data=None , to_date=None, page_size=10, page_number=1):
-        url = f'{self.ENDPOINT}/v1/receive/archive'
+        url = f'{self.ENDPOINT}/v1/receive/archive/'
 
         data = {
             'fromDate' : from_data,
@@ -177,14 +177,14 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
     
     def get_credit(self):
-        url = f'{self.ENDPOINT}/v1/credit'
+        url = f'{self.ENDPOINT}/v1/credit/'
 
         return self.get(
             url,
         )
 
     def get_line_numbers(self):
-        url = f'{self.ENDPOINT}/v1/line'
+        url = f'{self.ENDPOINT}/v1/line/'
 
         return self.get(
             url,
