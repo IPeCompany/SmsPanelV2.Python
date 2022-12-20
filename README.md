@@ -88,3 +88,24 @@ sms_ir.report_pack(
     pack_id,
 )
 ```
+
+### Today Report
+get report of Today sent Messages
+```python
+sms_ir.report_today(
+    page_size,
+    page_number,
+)
+```
+
+### Archived Report
+get report of Archived Messages
+```python
+sms_ir.report_archived(
+    from_date,
+    to_date,
+    page_size,
+    page_number,
+)
+```
+

@@ -18,10 +18,11 @@ class SmsIrRequestMethodMixin :
             headers=self._headers,
         )
     
-    def get(self, url):
+    def get(self, url, data=None):
         return requests.get(
             url,
             headers=self._headers,
+            json=data or {},
         )
 
 
@@ -105,4 +106,32 @@ class SmsIr(SmsIrRequestMethodMixin):
 
         return self.get(
             url,
+        )
+    
+    def report_today(self, page_size, page_number):
+        url = f'{self.ENDPOINT}/v1/send/live'
+
+        data = {
+            'pageSize' : page_size,
+            'pageNumber' : page_number,
+        }
+
+        return self.get(
+            url,
+            data,
+        )
+    
+    def report_archived(self, from_date=None, to_date=None, page_size=10, page_number=1):
+        url = f'{self.ENDPOINT}/v1/send/archive'
+
+        data = {
+            'fromDate': from_date,
+            'toDate' : to_date,
+            'pageSize' : page_size,
+            'pageNumber' : page_number,
+        }
+
+        return self.get(
+            url,
+            data,
         )
