@@ -116,3 +116,13 @@ sms_ir.report_latest_received(
     count,
 )
 ```
+
+### Today Received Report
+get report of today received messages
+```python
+sms_ir.report_today_received(
+    page_size,
+    page_number,
+)
+```
+

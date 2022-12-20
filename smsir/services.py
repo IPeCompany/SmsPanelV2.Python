@@ -147,4 +147,17 @@ class SmsIr(SmsIrRequestMethodMixin):
             url,
             data,
         )
+    
+    def report_today_received(self, page_size, page_number):
+        url = f'{self.ENDPOINT}/v1/receive/live'
+
+        data = {
+            'pageSize': page_size,
+            'pageNumber': page_number,
+        }
+
+        return self.get(
+            url,
+            data,
+        )
 
