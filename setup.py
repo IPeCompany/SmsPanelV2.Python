@@ -4,7 +4,7 @@ with open("README.md", "r") as f:
     description = f.read()
 
 setuptools.setup(
-    name="sms_ir",
+    name="smsir-python",
     version="1.0.0",
     author="Mojtaba Akbari",
     author_email="mojtaba.akbari.221b@gmail.com",
