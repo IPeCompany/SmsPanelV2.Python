@@ -4,11 +4,11 @@ with open("README.md", "r") as f:
     description = f.read()
 
 setuptools.setup(
-    name="smsir",
+    name="sms_ir",
     version="1.0.0",
     author="Mojtaba Akbari",
     author_email="mojtaba.akbari.221b@gmail.com",
-    packages=["smsir"],
+    packages=["sms_ir"],
     description="Python Package of SMS.ir Panel ",
     long_description=description,
     long_description_content_type="text/markdown",
