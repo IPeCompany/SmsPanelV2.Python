@@ -1,3 +1,3 @@
 build
 dist
-sms_ir.egg-info
+*.egg-info
