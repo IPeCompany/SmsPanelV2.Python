@@ -17,7 +17,7 @@ pip install faster-than-requests
 ## Usage
 ### Create Instance
 ```python
-from smsir import SmsIr
+from sms_ir import SmsIr
 sms_ir = SmsIr(
     api_key,
     linenumber,
