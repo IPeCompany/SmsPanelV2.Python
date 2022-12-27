@@ -3,7 +3,7 @@ sms.ir python package
 
 ## Installation
 ```
-pip install smsir_python
+pip install smsir-python
 ```
 
 ## Requirements
