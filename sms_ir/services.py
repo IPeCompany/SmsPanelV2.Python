@@ -1,8 +1,5 @@
 from typing import List
-try :
-    import faster_than_requests as requests
-except ModuleNotFoundError:
-    import requests
+import requests
 
 response = requests.models.Response
 
@@ -299,7 +296,7 @@ class SmsIr(SmsIrRequestMethodMixin):
         """
         get account line numbers
         """
-        
+
         url = f'{self.ENDPOINT}/v1/line/'
 
         return self.get(
