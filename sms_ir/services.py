@@ -1,31 +1,11 @@
-from typing import List
 import requests
+from typing import List
+from .mixins import RequestsMixin, LoggerMixin
 
 response = requests.models.Response
 
-class SmsIrRequestMethodMixin :
-    def post(self, url, data):
-        return requests.post(
-            url,
-            headers=self._headers,
-            json=data,
-        )
 
-    def delete(self, url):
-        return requests.delete(
-            url,
-            headers=self._headers,
-        )
-    
-    def get(self, url, data=None):
-        return requests.get(
-            url,
-            headers=self._headers,
-            json=data or {},
-        )
-
-
-class SmsIr(SmsIrRequestMethodMixin):
+class SmsIr(RequestsMixin, LoggerMixin):
     ENDPOINT = 'https://api.sms.ir'
 
     def __init__(
@@ -33,6 +13,8 @@ class SmsIr(SmsIrRequestMethodMixin):
                 api_key: str,
                 linenumber: int|None = None,
             ) -> None:
+        
+        self.config_logger()
         
         self._linenumber = linenumber
         self._headers = {
