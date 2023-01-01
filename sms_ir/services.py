@@ -1,6 +1,6 @@
 import requests
 from typing import List
-from .mixins import RequestsMixin, LoggerMixin
+from mixins import RequestsMixin, LoggerMixin
 
 response = requests.models.Response
 
