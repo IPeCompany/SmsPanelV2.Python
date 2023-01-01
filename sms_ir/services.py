@@ -50,6 +50,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                 message: str,
                 linenumber: int|None = None,
             ) -> response:
+        """
+        Send message to specific mobile number
+        """
         
         self.send_bulk_sms(
             numbers=[number],
@@ -63,6 +66,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                     message: str,
                     linenumber: int|None = None,
                 ) -> response:
+        """
+        Send message to multiple mobile numbers
+        """
         
         url = f'{self.ENDPOINT}/v1/send/bulk/'
 
@@ -84,6 +90,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                         linenumber: int|None =None,
                         send_date_time: str|None =None,
                     ) -> response:
+        """
+        Send multiple messages to multiple mobile numbers pair to pair
+        """
         
         url = f'{self.ENDPOINT}/v1/send/liketolike/'
 
@@ -103,6 +112,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                         self,
                         pack_id: int,
                     ) -> response:
+        """
+        Delete scheduled message pack
+        """
         
         url = f'{self.ENDPOINT}/v1/send/scheduled/{pack_id}/'
 
@@ -116,6 +128,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                         template_id: int,
                         parameters: List,
                     ) -> response:
+        """
+        Send verification code with predefined template
+        """
         
         url = f'{self.ENDPOINT}/v1/send/verify/'
 
@@ -134,6 +149,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                     self,
                     message_id: int,
                 ) -> response:
+        """
+        get report of sent message
+        """
         
         url = f'{self.ENDPOINT}/v1/send/{message_id}/'
 
@@ -145,6 +163,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                     self,
                     pack_id: int,
                 ) -> response:
+        """
+        get report of sent message pack
+        """
         
         url = f'{self.ENDPOINT}/v1/send/pack/{pack_id}/'
 
@@ -157,6 +178,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                     page_size: int,
                     page_number: int,
                 ) -> response:
+        """
+        get report of Today sent Messages
+        """
         
         url = f'{self.ENDPOINT}/v1/send/live/'
 
@@ -177,6 +201,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                         page_size: int =10,
                         page_number: int =1,
                     ) -> response:
+        """
+        get report of Archived Messages
+        """
 
         url = f'{self.ENDPOINT}/v1/send/archive/'
 
@@ -196,6 +223,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                             self,
                             count: int,
                         ) -> response:
+        """
+        get report of latest received messages
+        """
         
         url = f'{self.ENDPOINT}/v1/receive/latest/'
 
@@ -213,6 +243,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                             page_size: int,
                             page_number: int,
                         ) -> response:
+        """
+        get report of today received messages
+        """
         
         url = f'{self.ENDPOINT}/v1/receive/live/'
 
@@ -233,6 +266,9 @@ class SmsIr(SmsIrRequestMethodMixin):
                                 page_size: int =10,
                                 page_number: int =1,
                             ) -> response:
+        """
+        get report of today received messages
+        """
         
         url = f'{self.ENDPOINT}/v1/receive/archive/'
 
@@ -249,6 +285,10 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
     
     def get_credit(self) -> response:
+        """
+        get account credit
+        """
+
         url = f'{self.ENDPOINT}/v1/credit/'
 
         return self.get(
@@ -256,6 +296,10 @@ class SmsIr(SmsIrRequestMethodMixin):
         )
 
     def get_line_numbers(self) -> response:
+        """
+        get account line numbers
+        """
+        
         url = f'{self.ENDPOINT}/v1/line/'
 
         return self.get(
