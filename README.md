@@ -130,7 +130,7 @@ sms_ir.report_today_received(
 get report of today received messages
 ```python
 sms_ir.report_archived_received(
-    from_data,
+    from_date,
     to_date,
     page_size,
     page_number,
