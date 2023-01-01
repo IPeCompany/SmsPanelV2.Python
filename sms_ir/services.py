@@ -31,7 +31,12 @@ class SmsIrRequestMethodMixin :
 class SmsIr(SmsIrRequestMethodMixin):
     ENDPOINT = 'https://api.sms.ir'
 
-    def __init__(self, api_key: str, linenumber: int|None = None) -> None:
+    def __init__(
+                self,
+                api_key: str,
+                linenumber: int|None = None,
+            ) -> None:
+        
         self._linenumber = linenumber
         self._headers = {
             "X-API-KEY": api_key,
@@ -39,14 +44,26 @@ class SmsIr(SmsIrRequestMethodMixin):
             'Content-Type': 'application/json',
         }
 
-    def send_sms(self, number: str, message: str, linenumber: int|None = None) -> response:
+    def send_sms(
+                self,
+                number: str,
+                message: str,
+                linenumber: int|None = None,
+            ) -> response:
+        
         self.send_bulk_sms(
             numbers=[number],
             message=message,
             linenumber=linenumber,
         )
 
-    def send_bulk_sms(self, numbers: List[str], message: str, linenumber: int|None = None) -> response:
+    def send_bulk_sms(
+                    self,
+                    numbers: List[str],
+                    message: str,
+                    linenumber: int|None = None,
+                ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/send/bulk/'
 
         data = {
@@ -60,7 +77,14 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
     
-    def send_like_to_like(self, numbers: List[str], messages: List[str], linenumber: int|None =None, send_date_time: str|None =None) -> response:
+    def send_like_to_like(
+                        self,
+                        numbers: List[str],
+                        messages: List[str],
+                        linenumber: int|None =None,
+                        send_date_time: str|None =None,
+                    ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/send/liketolike/'
 
         data = {
@@ -75,14 +99,24 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
 
-    def delete_scheduled(self, pack_id: int) -> response:
+    def delete_scheduled(
+                        self,
+                        pack_id: int,
+                    ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/send/scheduled/{pack_id}/'
 
         return self.delete(
             url,
         )
     
-    def send_verify_code(self, number: int, template_id: int, parameters: List) -> response:
+    def send_verify_code(
+                        self,
+                        number: int,
+                        template_id: int,
+                        parameters: List,
+                    ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/send/verify/'
 
         data = {
@@ -96,21 +130,34 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
     
-    def report_message(self, message_id: int) -> response:
+    def report_message(
+                    self,
+                    message_id: int,
+                ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/send/{message_id}/'
 
         return self.get(
             url,
         )
     
-    def report_pack(self, pack_id: int) -> response:
+    def report_pack(
+                    self,
+                    pack_id: int,
+                ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/send/pack/{pack_id}/'
 
         return self.get(
             url,
         )
     
-    def report_today(self, page_size: int, page_number: int) -> response:
+    def report_today(
+                    self,
+                    page_size: int,
+                    page_number: int,
+                ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/send/live/'
 
         data = {
@@ -123,7 +170,14 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
     
-    def report_archived(self, from_date: int|None =None, to_date: int|None =None, page_size: int =10, page_number: int =1) -> response:
+    def report_archived(
+                        self,
+                        from_date: int|None =None,
+                        to_date: int|None =None,
+                        page_size: int =10,
+                        page_number: int =1,
+                    ) -> response:
+
         url = f'{self.ENDPOINT}/v1/send/archive/'
 
         data = {
@@ -138,7 +192,11 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
 
-    def report_latest_received(self, count: int) -> response:
+    def report_latest_received(
+                            self,
+                            count: int,
+                        ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/receive/latest/'
 
         data = {
@@ -150,7 +208,12 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
     
-    def report_today_received(self, page_size: int, page_number: int) -> response:
+    def report_today_received(
+                            self,
+                            page_size: int,
+                            page_number: int,
+                        ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/receive/live/'
 
         data = {
@@ -163,7 +226,14 @@ class SmsIr(SmsIrRequestMethodMixin):
             data,
         )
     
-    def report_archived_received(self, from_date: int|None =None , to_date: int|None =None, page_size: int =10, page_number: int =1) -> response:
+    def report_archived_received(
+                                self,
+                                from_date: int|None =None,
+                                to_date: int|None =None,
+                                page_size: int =10,
+                                page_number: int =1,
+                            ) -> response:
+        
         url = f'{self.ENDPOINT}/v1/receive/archive/'
 
         data = {
