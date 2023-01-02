@@ -33,7 +33,6 @@ class RequestsMixin :
                 url,
                 headers=self._headers,
                 json=data,
-                timeout=0.1,
             )
         except (ConnectTimeout, HTTPError, ReadTimeout, Timeout, ConnectionError) as e:
             self.logger.error(str(e))
