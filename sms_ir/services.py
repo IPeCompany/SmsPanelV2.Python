@@ -1,8 +1,6 @@
-import requests
 from typing import List
-from mixins import RequestsMixin, LoggerMixin
-
-response = requests.models.Response
+from requests.models import Response
+from .mixins import RequestsMixin, LoggerMixin
 
 
 class SmsIr(RequestsMixin, LoggerMixin):
@@ -28,12 +26,12 @@ class SmsIr(RequestsMixin, LoggerMixin):
                 number: str,
                 message: str,
                 linenumber: int|None = None,
-            ) -> response:
+            ) -> Response:
         """
         Send message to specific mobile number
         """
         
-        self.send_bulk_sms(
+        return self.send_bulk_sms(
             numbers=[number],
             message=message,
             linenumber=linenumber,
@@ -44,7 +42,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                     numbers: List[str],
                     message: str,
                     linenumber: int|None = None,
-                ) -> response:
+                ) -> Response:
         """
         Send message to multiple mobile numbers
         """
@@ -68,7 +66,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                         messages: List[str],
                         linenumber: int|None =None,
                         send_date_time: str|None =None,
-                    ) -> response:
+                    ) -> Response:
         """
         Send multiple messages to multiple mobile numbers pair to pair
         """
@@ -90,7 +88,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
     def delete_scheduled(
                         self,
                         pack_id: int,
-                    ) -> response:
+                    ) -> Response:
         """
         Delete scheduled message pack
         """
@@ -106,7 +104,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                         number: int,
                         template_id: int,
                         parameters: List,
-                    ) -> response:
+                    ) -> Response:
         """
         Send verification code with predefined template
         """
@@ -127,7 +125,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
     def report_message(
                     self,
                     message_id: int,
-                ) -> response:
+                ) -> Response:
         """
         get report of sent message
         """
@@ -141,7 +139,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
     def report_pack(
                     self,
                     pack_id: int,
-                ) -> response:
+                ) -> Response:
         """
         get report of sent message pack
         """
@@ -156,7 +154,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                     self,
                     page_size: int,
                     page_number: int,
-                ) -> response:
+                ) -> Response:
         """
         get report of Today sent Messages
         """
@@ -179,7 +177,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                         to_date: int|None =None,
                         page_size: int =10,
                         page_number: int =1,
-                    ) -> response:
+                    ) -> Response:
         """
         get report of Archived Messages
         """
@@ -201,7 +199,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
     def report_latest_received(
                             self,
                             count: int,
-                        ) -> response:
+                        ) -> Response:
         """
         get report of latest received messages
         """
@@ -221,7 +219,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                             self,
                             page_size: int,
                             page_number: int,
-                        ) -> response:
+                        ) -> Response:
         """
         get report of today received messages
         """
@@ -244,7 +242,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                                 to_date: int|None =None,
                                 page_size: int =10,
                                 page_number: int =1,
-                            ) -> response:
+                            ) -> Response:
         """
         get report of today received messages
         """
@@ -263,7 +261,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
             data,
         )
     
-    def get_credit(self) -> response:
+    def get_credit(self) -> Response:
         """
         get account credit
         """
@@ -274,7 +272,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
             url,
         )
 
-    def get_line_numbers(self) -> response:
+    def get_line_numbers(self) -> Response:
         """
         get account line numbers
         """
