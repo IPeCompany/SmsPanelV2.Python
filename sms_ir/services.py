@@ -152,8 +152,8 @@ class SmsIr(RequestsMixin, LoggerMixin):
     
     def report_today(
                     self,
-                    page_size: int,
-                    page_number: int,
+                    page_size: int =10,
+                    page_number: int =1,
                 ) -> Response:
         """
         get report of Today sent Messages
@@ -217,8 +217,8 @@ class SmsIr(RequestsMixin, LoggerMixin):
     
     def report_today_received(
                             self,
-                            page_size: int,
-                            page_number: int,
+                            page_size: int =10,
+                            page_number: int =1,
                         ) -> Response:
         """
         get report of today received messages
