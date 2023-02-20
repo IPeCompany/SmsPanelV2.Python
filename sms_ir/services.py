@@ -4,6 +4,7 @@ from typing import TypeVar
 from .mixins import RequestsMixin, LoggerMixin
 
 T = TypeVar('T', int, None)
+S = TypeVar('S', str, None)
 
 
 class SmsIr(RequestsMixin, LoggerMixin):
@@ -68,7 +69,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                         numbers: List[str],
                         messages: List[str],
                         linenumber: T =None,
-                        send_date_time: str|None =None,
+                        send_date_time: S =None,
                     ) -> Response:
         """
         Send multiple messages to multiple mobile numbers pair to pair
