@@ -1,6 +1,9 @@
 from typing import List
 from requests.models import Response
+from typing import TypeVar
 from .mixins import RequestsMixin, LoggerMixin
+
+T = TypeVar('T', int, None)
 
 
 class SmsIr(RequestsMixin, LoggerMixin):
@@ -9,7 +12,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
     def __init__(
                 self,
                 api_key: str,
-                linenumber: int|None = None,
+                linenumber: T = None,
             ) -> None:
         
         self.config_logger()
@@ -25,7 +28,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                 self,
                 number: str,
                 message: str,
-                linenumber: int|None = None,
+                linenumber: T = None,
             ) -> Response:
         """
         Send message to specific mobile number
@@ -41,7 +44,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                     self,
                     numbers: List[str],
                     message: str,
-                    linenumber: int|None = None,
+                    linenumber: T = None,
                 ) -> Response:
         """
         Send message to multiple mobile numbers
@@ -64,7 +67,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                         self,
                         numbers: List[str],
                         messages: List[str],
-                        linenumber: int|None =None,
+                        linenumber: T =None,
                         send_date_time: str|None =None,
                     ) -> Response:
         """
@@ -173,8 +176,8 @@ class SmsIr(RequestsMixin, LoggerMixin):
     
     def report_archived(
                         self,
-                        from_date: int|None =None,
-                        to_date: int|None =None,
+                        from_date: T =None,
+                        to_date: T =None,
                         page_size: int =10,
                         page_number: int =1,
                     ) -> Response:
@@ -238,8 +241,8 @@ class SmsIr(RequestsMixin, LoggerMixin):
     
     def report_archived_received(
                                 self,
-                                from_date: int|None =None,
-                                to_date: int|None =None,
+                                from_date: T =None,
+                                to_date: T =None,
                                 page_size: int =10,
                                 page_number: int =1,
                             ) -> Response:
