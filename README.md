@@ -67,6 +67,19 @@ sms_ir.send_verify_code(
     parameters,
 )
 ```
+another sample code:
+```python
+sms_ir.send_verify_code(
+    number="+989111111111",
+    template_id=10000,
+    parameters=[
+        {
+            "name" : "code",
+            "value": 12345,
+        },
+    ],
+)
+```
 
 ### Message Report
 get report of sent message
