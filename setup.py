@@ -14,6 +14,6 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/IPeCompany/SmsPanelV2.Python",
     license='MIT',
-    python_requires='>=3.8',
-    install_requires=[]
+    python_requires='>=3.7',
+    install_requires=[],
 )
