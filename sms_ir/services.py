@@ -11,7 +11,7 @@ S = TypeVar('S', str, None)
 class BaseSMS:
     """Base class for SMSIR class"""
     ENDPOINT = 'https://api.sms.ir'
-    API_VERSION = "{self.API_VERSION}"
+    API_VERSION = "v1"
 
 
 class SmsIr(RequestsMixin, LoggerMixin, BaseSMS):
