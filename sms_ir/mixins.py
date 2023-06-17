@@ -62,10 +62,15 @@ class RequestsMixin :
             return self.fake_response(e.request)        
     
     def fake_response(self, request):
+        """
+        If any problem occurs during sending the request,
+        this function returns a fake response and logs the error.
+        """
         response = requests.models.Response()
 
         response.status_code = 503
         response.request = request
         response.url = request.url
+        response.headers = {"Message response": "default response <fake response>"} 
 
         return response
