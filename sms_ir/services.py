@@ -7,8 +7,14 @@ T = TypeVar('T', int, None)
 S = TypeVar('S', str, None)
 
 
-class SmsIr(RequestsMixin, LoggerMixin):
+
+class BaseSMS:
+    """Base class for SMSIR class"""
     ENDPOINT = 'https://api.sms.ir'
+    API_VERSION = "{self.API_VERSION}"
+
+
+class SmsIr(RequestsMixin, LoggerMixin, BaseSMS):
 
     def __init__(
                 self,
@@ -49,9 +55,15 @@ class SmsIr(RequestsMixin, LoggerMixin):
                 ) -> Response:
         """
         Send message to multiple mobile numbers
+        args: 
+                    numbers: List[str], list of recivers number
+                    message: str,
+                    linenumber: T = None
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + you can send to one mobile as well [one number]
         """
         
-        url = f'{self.ENDPOINT}/v1/send/bulk/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/bulk/'
 
         data = {
             'lineNumber': linenumber or self._linenumber,
@@ -75,7 +87,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         Send multiple messages to multiple mobile numbers pair to pair
         """
         
-        url = f'{self.ENDPOINT}/v1/send/liketolike/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/liketolike/'
 
         data = {
             'lineNumber': linenumber or self._linenumber,
@@ -97,7 +109,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         Delete scheduled message pack
         """
         
-        url = f'{self.ENDPOINT}/v1/send/scheduled/{pack_id}/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/scheduled/{pack_id}/'
 
         return self.delete(
             url,
@@ -113,7 +125,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         Send verification code with predefined template
         """
         
-        url = f'{self.ENDPOINT}/v1/send/verify/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/verify/'
 
         data = {
             'Mobile' : number,
@@ -134,7 +146,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get report of sent message
         """
         
-        url = f'{self.ENDPOINT}/v1/send/{message_id}/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/{message_id}/'
 
         return self.get(
             url,
@@ -148,7 +160,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get report of sent message pack
         """
         
-        url = f'{self.ENDPOINT}/v1/send/pack/{pack_id}/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/pack/{pack_id}/'
 
         return self.get(
             url,
@@ -163,7 +175,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get report of Today sent Messages
         """
         
-        url = f'{self.ENDPOINT}/v1/send/live/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/live/'
 
         data = {
             'pageSize' : page_size,
@@ -186,7 +198,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get report of Archived Messages
         """
 
-        url = f'{self.ENDPOINT}/v1/send/archive/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/send/archive/'
 
         data = {
             'fromDate': from_date,
@@ -208,7 +220,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get report of latest received messages
         """
         
-        url = f'{self.ENDPOINT}/v1/receive/latest/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/receive/latest/'
 
         data = {
             'count': count,
@@ -228,7 +240,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get report of today received messages
         """
         
-        url = f'{self.ENDPOINT}/v1/receive/live/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/receive/live/'
 
         data = {
             'pageSize': page_size,
@@ -251,7 +263,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get report of today received messages
         """
         
-        url = f'{self.ENDPOINT}/v1/receive/archive/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/receive/archive/'
 
         data = {
             'fromDate' : from_date,
@@ -270,7 +282,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get account credit
         """
 
-        url = f'{self.ENDPOINT}/v1/credit/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/credit/'
 
         return self.get(
             url,
@@ -281,7 +293,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         get account line numbers
         """
 
-        url = f'{self.ENDPOINT}/v1/line/'
+        url = f'{self.ENDPOINT}/{self.API_VERSION}/line/'
 
         return self.get(
             url,
