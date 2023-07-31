@@ -105,7 +105,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
     
     def send_verify_code(
                         self,
-                        number: int,
+                        number: str,
                         template_id: int,
                         parameters: List,
                     ) -> Response:
