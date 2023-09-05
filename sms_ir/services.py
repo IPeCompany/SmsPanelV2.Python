@@ -107,7 +107,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
                         self,
                         number: int,
                         template_id: int,
-                        parameters: List,
+                        **parameters: dict[str,str],
                     ) -> Response:
         """
         Send verification code with predefined template
@@ -118,7 +118,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         data = {
             'Mobile' : number,
             'TemplateId' : template_id,
-            'Parameters' : parameters,
+            'Parameters' : [dict(name=k,value=v) for k,v in parameters.items()],
         }
 
         return self.post(
