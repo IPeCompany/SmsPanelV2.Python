@@ -165,14 +165,14 @@ class SmsIr(RequestsMixin, LoggerMixin):
         
         url = f'{self.ENDPOINT}/v1/send/live/'
 
-        data = {
+        params = {
             'pageSize' : page_size,
             'pageNumber' : page_number,
         }
 
         return self.get(
             url,
-            data,
+            params,
         )
     
     def report_archived(
@@ -188,7 +188,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
 
         url = f'{self.ENDPOINT}/v1/send/archive/'
 
-        data = {
+        params = {
             'fromDate': from_date,
             'toDate' : to_date,
             'pageSize' : page_size,
@@ -197,7 +197,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
 
         return self.get(
             url,
-            data,
+            params,
         )
 
     def report_latest_received(
@@ -210,13 +210,13 @@ class SmsIr(RequestsMixin, LoggerMixin):
         
         url = f'{self.ENDPOINT}/v1/receive/latest/'
 
-        data = {
+        params = {
             'count': count,
         }
 
         return self.get(
             url,
-            data,
+            params,
         )
     
     def report_today_received(
@@ -230,14 +230,14 @@ class SmsIr(RequestsMixin, LoggerMixin):
         
         url = f'{self.ENDPOINT}/v1/receive/live/'
 
-        data = {
+        params = {
             'pageSize': page_size,
             'pageNumber': page_number,
         }
 
         return self.get(
             url,
-            data,
+            params,
         )
     
     def report_archived_received(
@@ -253,7 +253,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
         
         url = f'{self.ENDPOINT}/v1/receive/archive/'
 
-        data = {
+        params = {
             'fromDate' : from_date,
             'toDate' : to_date,
             'pageSize' : page_size,
@@ -262,7 +262,7 @@ class SmsIr(RequestsMixin, LoggerMixin):
 
         return self.get(
             url,
-            data,
+            params,
         )
     
     def get_credit(self) -> Response:

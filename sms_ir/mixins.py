@@ -49,13 +49,13 @@ class RequestsMixin :
             self.logger.error(str(e))
             return self.fake_response(e.request)
     
-    def get(self, url, data=None):
+    def get(self, url, params=None):
         try :
             self.logger.info("send request to %s", url)
             return requests.get(
                 url,
                 headers=self._headers,
-                json=data or {},
+                params=params,
             )
         except (ConnectTimeout, HTTPError, ReadTimeout, Timeout, ConnectionError) as e:
             self.logger.error(str(e))
