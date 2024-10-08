@@ -100,7 +100,7 @@ class SmsIr:
         self,
         number: str,
         template_id: int,
-        **parameters: dict[str, str],
+        **parameters: str,
     ) -> Response:
         """
         Send verification code with predefined template

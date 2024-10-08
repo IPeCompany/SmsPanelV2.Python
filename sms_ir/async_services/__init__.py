@@ -107,7 +107,7 @@ class AsyncSmsIr:
         self,
         number: str,
         template_id: int,
-        **parameters: dict[str, str],
+        **parameters: str,
     ) -> ClientResponse:
         """
         Send verification code with preasync defined template
