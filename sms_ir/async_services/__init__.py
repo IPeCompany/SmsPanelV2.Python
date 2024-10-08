@@ -105,7 +105,7 @@ class AsyncSmsIr:
 
     async def send_verify_code(
         self,
-        number: int,
+        number: str,
         template_id: int,
         **parameters: dict[str, str],
     ) -> ClientResponse:
